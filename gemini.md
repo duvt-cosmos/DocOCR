@@ -2,12 +2,12 @@
 
 ## Project Overview
 This project, **DocOCR**, is a **Kotlin Multiplatform (KMP)** application utilizing **Compose Multiplatform** to build a shared UI.
-Currently, the project targets the **Web** platform (using both `wasmJs` and `js` targets). The bulk of the development should happen in the shared source set located in `composeApp/src/commonMain/kotlin`.
+Currently, the project targets the **Web** platform (using both `wasmJs` and `js` targets). The bulk of the development should happen in the shared source set located in `composeApp/src/commonMain/kotlin`, while web-specific entry-points and layout (e.g., Split View) reside in `composeApp/src/webMain/kotlin`.
 
 ## Technology Stack
 - **Languages**: Kotlin (Kotlin DSL for Gradle builds `.gradle.kts`)
 - **Key Frameworks**: 
-  - Compose Multiplatform (Runtime, Foundation, Material3, UI, Resources)
+  - Compose Multiplatform (Runtime, Foundation, Material3, Material Icons Extended, UI, Resources)
   - AndroidX Lifecycle for ViewModel (`androidx.lifecycle.viewmodelCompose`) 
 - **Platform Targets**: Web (`wasmJs` / `js`)
 
@@ -18,7 +18,8 @@ Currently, the project targets the **Web** platform (using both `wasmJs` and `js
    - Write granular, independent, and reusable `@Composable` UI building blocks.
    - Utilize ViewModels when UI state complexity requires it.
 3. **Multiplatform Approach**:
-   - Write logic and design in `commonMain` to maximize shared code.
+   - Write logic and generic UI components (like `UploadPanel` and `ResultPanel`) in `commonMain` to maximize shared code.
+   - Use target-specific source sets like `webMain` for main application execution patterns and web-specific layouts.
    - Restrict platform specific codes (`expect`/`actual`) to OS-level operations (e.g., file system access, browser APIs).
 4. **Skills/Workflows Awareness**: It is critical to consult the local `.agents/skills` directory and invoke available skills when responding to user instructions (as directed by `using-superpowers`).
 
