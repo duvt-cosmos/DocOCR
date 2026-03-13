@@ -1,0 +1,41 @@
+<div class="mockup">
+  <div class="mockup-header">DocOCR Design Spec Approval</div>
+  <div class="mockup-body" style="padding: 30px;">
+    <h2>Finalizing DocOCR Design</h2>
+    <p class="subtitle">Here is the consolidated design based on our conversation. Let me know if this looks correct before I write up the formal spec.</p>
+
+    <div class="section" style="margin-top: 30px;">
+      <h3 style="border-bottom: 2px solid #eee; padding-bottom: 5px;">1. User Interface: Split View</h3>
+      <p>A Kotlin Multiplatform (Compose M3) web application featuring a dual-panel layout:</p>
+      <ul>
+         <li><strong>Left Panel:</strong> Drag-and-drop zone for uploading documents (PDFs, Images). Displays a preview of the uploaded content.</li>
+         <li><strong>Right Panel:</strong> Displays the extracted OCR text results for easy side-by-side comparison with the original image.</li>
+         <li><strong>State:</strong> Clear loading indicators while the document is being processed.</li>
+      </ul>
+    </div>
+
+    <div class="section" style="margin-top: 30px;">
+      <h3 style="border-bottom: 2px solid #eee; padding-bottom: 5px;">2. Architecture & Backend</h3>
+      <p>The KMP frontend will communicate with an existing backend infrastructure:</p>
+      <ul>
+         <li><strong>Frontend:</strong> KMP Web App (`wasmJs` / `js` targets)</li>
+         <li><strong>Backend:</strong> Existing Java Spring Boot application hosted on AWS ECS, fronted by an Application Load Balancer (ALB).</li>
+         <li><strong>OCR Engine:</strong> The Spring Boot backend will be responsible for securely interacting with the AWS Textract API.</li>
+         <li><strong>API Contract:</strong> The KMP app will send the file (multipart/form-data or base64) to a Spring Boot endpoint and receive JSON containing the extracted text.</li>
+      </ul>
+    </div>
+
+    <div class="section" style="margin-top: 30px; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+      <h3 style="margin-top: 0; color: #333;">Next Steps (If Approved)</h3>
+      <ol>
+         <li>I will write this up into a formal Markdown specification document.</li>
+         <li>I will have my subagent review the spec against our guidelines.</li>
+         <li>Once passed, I'll present it to you for final sign-off before we plan the code implementation.</li>
+      </ol>
+    </div>
+
+    <div style="margin-top: 30px; text-align: center;">
+       <p style="font-style: italic; color: #666;">Please reply in the terminal if this design looks right to you, or if we need to adjust anything.</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="mockup">
+  <div class="mockup-header">DocOCR Architecture Approaches</div>
+  <div class="mockup-body" style="padding: 20px;">
+    <h2>How should we integrate AWS Textract?</h2>
+    <p class="subtitle">Since this is a Kotlin Multiplatform app, we have a few ways to connect the UI to AWS Textract.</p>
+
+    <div class="options">
+      <div class="option" data-choice="a" onclick="toggleSelect(this)">
+        <div class="letter">A</div>
+        <div class="content">
+          <h3>Option A: Direct to API Gateway + Lambda</h3>
+          <p>The KMP app talks directly to an AWS API Gateway endpoint, which triggers a Lambda function. The Lambda handles the Textract SDK calls and returns the text.</p>
+          <ul style="font-size: 0.85em; color: #555; padding-left: 20px;">
+             <li><strong>Pros:</strong> Secure (no AWS credentials in frontend), clean separation of concerns.</li>
+             <li><strong>Cons:</strong> Requires setting up AWS infrastructure before the UI is fully functional.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="option" data-choice="b" onclick="toggleSelect(this)">
+        <div class="letter">B</div>
+        <div class="content">
+          <h3>Option B: Backend-for-Frontend (Ktor Server)</h3>
+          <p>We build a Kotlin backend (e.g., Ktor) that the frontend talks to. The Ktor server then handles the AWS Textract SDK calls.</p>
+          <ul style="font-size: 0.85em; color: #555; padding-left: 20px;">
+             <li><strong>Pros:</strong> Keeps everything in Kotlin. Easy to add more business logic later.</li>
+             <li><strong>Cons:</strong> More code to write and maintain; slightly more complex deployment.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="option" data-choice="c" onclick="toggleSelect(this)">
+        <div class="letter">C</div>
+        <div class="content">
+          <h3>Option C: Direct SDK Call (Not Recommended for Web)</h3>
+          <p>Using the AWS JS SDK directly from the browser (via JS interop in KMP).</p>
+          <ul style="font-size: 0.85em; color: #555; padding-left: 20px;">
+             <li><strong>Pros:</strong> Fastest to prototype.</li>
+             <li><strong>Cons:</strong> Security risk (exposing AWS credentials/Cognito to browser), tricky JS interop with Kotlin Wasm.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div style="margin-top: 20px; padding: 15px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px;">
+       <strong>My Recommendation: Option A</strong> <br>
+       It's the most standard AWS Serverless practice. We can mock the API response in the UI for now, allowing us to build the beautiful Split View interface immediately without waiting for the backend.
+    </div>
+  </div>
+</div>

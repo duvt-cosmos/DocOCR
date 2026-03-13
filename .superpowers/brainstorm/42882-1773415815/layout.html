@@ -1,0 +1,50 @@
+<div class="mockup">
+  <div class="mockup-header">DocOCR Dashboard Layouts</div>
+  <div class="mockup-body" style="padding: 20px;">
+    <h2>Which layout feels more intuitive for DocOCR?</h2>
+    <p class="subtitle">Consider the user's primary goal: upload a document and get text back.</p>
+
+    <div class="options">
+      <div class="option" data-choice="a" onclick="toggleSelect(this)">
+        <div class="letter">A</div>
+        <div class="content">
+          <h3>Split View (Side-by-Side)</h3>
+          <p>Upload/Image on the left, extracted text taking up the right side. Best for wide screens, allowing direct comparison of original and OCR.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px; border: 1px solid #ccc; padding: 5px; height: 100px;">
+             <div style="flex: 1; border: 1px dashed #999; display: flex; align-items: center; justify-content: center; background: #f9f9f9; font-size: 0.8em;">Upload / Image</div>
+             <div style="flex: 1; border: 1px solid #eee; padding: 5px; font-size: 0.8em; overflow: hidden; color: #666;">Extracted text appears here...</div>
+          </div>
+        </div>
+      </div>
+      <div class="option" data-choice="b" onclick="toggleSelect(this)">
+        <div class="letter">B</div>
+        <div class="content">
+          <h3>Stacked (Top-Bottom)</h3>
+          <p>Large dropzone at the top. Once processed, the text appears below it. Keeps focus centered. More natural for scrolling.</p>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px; border: 1px solid #ccc; padding: 5px; height: 120px;">
+             <div style="height: 50px; border: 1px dashed #999; display: flex; align-items: center; justify-content: center; background: #f9f9f9; font-size: 0.8em;">Big Upload Area / Preview</div>
+             <div style="flex: 1; border: 1px solid #eee; padding: 5px; font-size: 0.8em; overflow: hidden; color: #666;">Extracted text below...</div>
+          </div>
+        </div>
+      </div>
+      <div class="option" data-choice="c" onclick="toggleSelect(this)">
+        <div class="letter">C</div>
+        <div class="content">
+          <h3>Modal / Wizard Flow</h3>
+          <p>Step 1: Big upload screen. Step 2: Transitions to a full-screen results view showing the text, with an option to start over.</p>
+           <div style="display: flex; gap: 10px; margin-top: 10px; height: 100px;">
+             <div style="flex: 1; border: 1px solid #ccc; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f9f9f9; font-size: 0.8em;">
+                <div>Step 1</div>
+               <div style="width: 80%; height: 40px; border: 1px dashed #999; margin-top: 5px;"></div>
+             </div>
+             <div style="display: flex; align-items: center;">➔</div>
+             <div style="flex: 1; border: 1px solid #ccc; padding: 5px; font-size: 0.7em; color: #666; display: flex; flex-direction: column;">
+                <div style="font-weight: bold; margin-bottom: 5px; color:#333">Step 2 (Results)</div>
+                <div>Extracted text...</div>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
